@@ -13,7 +13,6 @@ interface INavbar {
 export const Navbar: FC<INavbar> = ({ className }) => {
   return (
     <div className={classNames(styles.Navbar, {}, [className])}>
-      <ThemeSwitcher/>
       <div className={styles.links}>
         <AppLink to='/' theme={AppLinkTheme.INVERTED} className={styles.mainLink}>Главная</AppLink>
         <AppLink to='/about' theme={AppLinkTheme.INVERTED}>О нас</AppLink>
