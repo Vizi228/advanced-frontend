@@ -1,5 +1,4 @@
 import { FC, Suspense } from "react";
-import { useTranslation } from "react-i18next";
 import "./styles/index.scss";
 
 import { classNames } from "shared/lib/classNames/classNames";
