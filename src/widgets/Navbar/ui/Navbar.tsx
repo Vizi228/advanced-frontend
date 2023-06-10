@@ -15,8 +15,16 @@ export const Navbar: FC<INavbar> = ({ className }) => {
   return (
     <div className={classNames(styles.Navbar, {}, [className])}>
       <div className={styles.links}>
-        <AppLink to="/" theme={AppLinkTheme.INVERTED} className={styles.mainLink}>{t('Main')}</AppLink>
-        <AppLink to="/about" theme={AppLinkTheme.INVERTED}>{t('About us')}</AppLink>
+        <AppLink
+          to="/"
+          theme={AppLinkTheme.INVERTED}
+          className={styles.mainLink}
+        >
+          {t('Main')}
+        </AppLink>
+        <AppLink to="/about" theme={AppLinkTheme.INVERTED}>
+          {t('About us')}
+        </AppLink>
       </div>
     </div>
   );
