@@ -6,23 +6,24 @@ import styles from './Button.module.scss';
 
 export enum ThemeButton {
   CLEAR = 'clear',
+  OUTLINE = 'outline',
 }
 
-interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   theme?: ThemeButton;
 }
 
-export const Button: FC<IButton> = ({
+export const Button: FC<ButtonProps> = ({
   className,
   children,
   theme,
-  ...props
+  ...otherProps
 }) => (
   <button
     type="button"
-    {...props}
     className={classNames(styles.Button, {}, [className, styles[theme]])}
+    {...otherProps}
   >
     {children}
   </button>

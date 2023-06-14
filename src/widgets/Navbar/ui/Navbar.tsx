@@ -17,12 +17,12 @@ export const Navbar: FC<INavbar> = ({ className }) => {
       <div className={styles.links}>
         <AppLink
           to="/"
-          theme={AppLinkTheme.INVERTED}
+          theme={AppLinkTheme.PRIMARY}
           className={styles.mainLink}
         >
           {t('Main')}
         </AppLink>
-        <AppLink to="/about" theme={AppLinkTheme.INVERTED}>
+        <AppLink to="/about" theme={AppLinkTheme.PRIMARY}>
           {t('About us')}
         </AppLink>
       </div>
