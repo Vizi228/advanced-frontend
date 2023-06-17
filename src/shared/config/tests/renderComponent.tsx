@@ -14,7 +14,7 @@ export interface RenderComponentOptions {
 
 export const renderComponent = (
   children: ReactNode,
-  options: RenderComponentOptions,
+  options?: RenderComponentOptions,
 ): RenderResult => {
   const { route = '/', initialState } = options;
   return render(
