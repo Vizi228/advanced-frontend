@@ -1,6 +1,7 @@
 import {
   FC, MouseEvent, ReactNode, useCallback, useEffect,
 } from 'react';
+import { useTheme } from 'app/providers/ThemeProvider';
 
 import { classNames } from 'shared/lib/classNames/classNames';
 import Portal from 'shared/ui/Portal/Portal';
@@ -9,7 +10,7 @@ import styles from './Modal.module.scss';
 
 interface IModal {
   className?: string;
-  children?: ReactNode
+  children?: ReactNode;
   isOpen?: boolean;
   onClose?: () => void;
 }
@@ -17,6 +18,8 @@ interface IModal {
 export const Modal: FC<IModal> = ({
   children, className, isOpen, onClose,
 }) => {
+  const { theme } = useTheme();
+
   const closeHandler = useCallback(() => {
     if (onClose) {
       onClose();
@@ -27,11 +30,14 @@ export const Modal: FC<IModal> = ({
     e.stopPropagation();
   };
 
-  const onKeyDown = useCallback((e: KeyboardEvent) => {
-    if (e.key === 'Escape') {
-      closeHandler();
-    }
-  }, [closeHandler]);
+  const onKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeHandler();
+      }
+    },
+    [closeHandler],
+  );
 
   useEffect(() => {
     if (isOpen) {
@@ -45,7 +51,13 @@ export const Modal: FC<IModal> = ({
 
   return (
     <Portal>
-      <div className={classNames(styles.Modal, { [styles.opened]: isOpen }, [className])}>
+      <div
+        className={classNames(styles.Modal, { [styles.opened]: isOpen }, [
+          className,
+          theme,
+          'app_modal',
+        ])}
+      >
         <div className={styles.overlay} onClick={closeHandler}>
           <div className={styles.content} onClick={onContentClick}>
             {children}
