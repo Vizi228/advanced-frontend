@@ -3,27 +3,27 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
-import { Modal } from './Modal';
+import { Input } from './Input';
 
 export default {
-  title: 'shared/Modal',
-  component: Modal,
+  title: 'shared/Input',
+  component: Input,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof Modal>;
+} as ComponentMeta<typeof Input>;
 
-const Template: ComponentStory<typeof Modal> = (args) => <Modal {...args} />;
+const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 
 export const Light = Template.bind({});
 Light.args = {
-  isOpen: true,
-  children: 'Lorem',
+  value: 'Text',
+  placeholder: 'Input',
 };
 
 export const Dark = Template.bind({});
 Dark.args = {
-  isOpen: true,
-  children: 'Lorem',
+  value: 'Text',
+  placeholder: 'Input',
 };
 Dark.decorators = [ThemeDecorator(Theme.DARK)];

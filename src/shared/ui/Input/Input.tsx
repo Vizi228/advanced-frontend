@@ -20,7 +20,7 @@ interface IInput extends HTMLInputProps {
   onChange?: (value: string) => void;
 }
 
-const Input = memo((props: IInput) => {
+export const Input = memo((props: IInput) => {
   const {
     onChange, value, className, type, autoFocus, placeholder, ...others
   } = props;
@@ -80,7 +80,4 @@ const Input = memo((props: IInput) => {
     </div>
   );
 });
-
 Input.displayName = 'Input';
-
-export default Input;
