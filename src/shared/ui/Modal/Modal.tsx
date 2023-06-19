@@ -1,5 +1,5 @@
 import {
-  FC, MouseEvent, ReactNode, useCallback, useEffect,
+  FC, MouseEvent, ReactNode, useCallback, useEffect, useState,
 } from 'react';
 
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -12,11 +12,18 @@ interface IModal {
   children?: ReactNode;
   isOpen?: boolean;
   onClose?: () => void;
+  lazy?: boolean;
 }
 
 export const Modal: FC<IModal> = ({
-  children, className, isOpen, onClose,
+  children,
+  className,
+  isOpen,
+  onClose,
+  lazy,
 }) => {
+  const [isMounted, setIsMounted] = useState<boolean>(false);
+
   const closeHandler = useCallback(() => {
     if (onClose) {
       onClose();
@@ -38,6 +45,12 @@ export const Modal: FC<IModal> = ({
 
   useEffect(() => {
     if (isOpen) {
+      setIsMounted(true);
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (isOpen) {
       window.addEventListener('keydown', onKeyDown);
     }
 
@@ -45,6 +58,10 @@ export const Modal: FC<IModal> = ({
       window.removeEventListener('keydown', onKeyDown);
     };
   }, [isOpen, onKeyDown]);
+
+  if (lazy && !isMounted) {
+    return null;
+  }
 
   return (
     <Portal>

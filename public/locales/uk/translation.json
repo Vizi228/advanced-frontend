@@ -7,5 +7,7 @@
   "Something went wrong": "Щось пішло не так",
   "Reload Page": "Перезавантажити сторінку",
   "Throw Error": "Кинути помилку",
-  "Log in": "Увійти"
+  "Log in": "Увійти",
+  "Username": "Ім'я",
+  "Password": "Пароль"
 }
