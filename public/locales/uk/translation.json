@@ -9,5 +9,8 @@
   "Throw Error": "Кинути помилку",
   "Log in": "Увійти",
   "Username": "Ім'я",
-  "Password": "Пароль"
+  "Password": "Пароль",
+  "Login": "Вхід",
+  "Wrong username or password": "Неправильне ім'я або пароль",
+  "Log out": "Вийти"
 }

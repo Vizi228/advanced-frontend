@@ -9,5 +9,8 @@
   "Throw Error": "Throw Error",
   "Log in": "Log in",
   "Username": "Username",
-  "Password": "Password"
+  "Password": "Password",
+  "Login": "Login",
+  "Wrong username or password": "Wrong username or password",
+  "Log out": "Log out"
 }
