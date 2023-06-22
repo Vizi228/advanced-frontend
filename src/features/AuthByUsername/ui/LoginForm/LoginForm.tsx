@@ -1,18 +1,21 @@
-import { FC, memo, useCallback } from 'react';
+import {
+  FC, memo, useCallback,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { useDynamicModuleLoad } from 'shared/hooks/useDynamicModuleLoad/useDynamicModuleLoad';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Input } from 'shared/ui/Input/Input';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 
 import { loginByUsername } from '../../model/services/loginByUsername';
-import { loginActions } from '../../model/slice/loginSlice';
+import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { getLoginState } from '../../model/selectors/getLoginState/getLoginState';
 import styles from './LoginForm.module.scss';
 
-interface ILoginForm {}
+export interface ILoginForm {}
 
 const LoginForm: FC<ILoginForm> = memo(() => {
   const { t } = useTranslation();
@@ -39,6 +42,7 @@ const LoginForm: FC<ILoginForm> = memo(() => {
     dispatch(loginByUsername({ username, password }));
   }, [username, password, dispatch]);
 
+  useDynamicModuleLoad({ login: loginReducer });
   return (
     <div className={classNames(styles.LoginForm, {}, [])}>
       <Text title={t('Login')} />

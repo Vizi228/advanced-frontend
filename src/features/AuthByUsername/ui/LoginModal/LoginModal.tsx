@@ -1,9 +1,10 @@
-import { FC } from 'react';
+import { FC, Suspense } from 'react';
 
 import { Modal } from 'shared/ui/Modal/Modal';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { Loader } from 'shared/ui/Loader/Loader';
 
-import LoginForm from '../LoginForm/LoginForm';
+import { LoginFormLazy } from '../LoginForm/LoginFormLazy';
 
 import styles from './LoginModal.module.scss';
 
@@ -20,7 +21,9 @@ const LoginModal: FC<ILoginModal> = ({ className, isOpen, onClose }) => (
     className={classNames(styles.LoginModal, {}, [className])}
     lazy
   >
-    <LoginForm />
+    <Suspense fallback={<Loader />}>
+      <LoginFormLazy />
+    </Suspense>
   </Modal>
 );
 
