@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -9,7 +9,7 @@ interface ILanguageSwitcher {
   short?: boolean;
 }
 
-export const LanguageSwitcher: FC<ILanguageSwitcher> = ({ className, short }) => {
+export const LanguageSwitcher: FC<ILanguageSwitcher> = memo(({ className, short }) => {
   const { t, i18n } = useTranslation();
 
   const toggleLanguage = () => {
@@ -25,4 +25,6 @@ export const LanguageSwitcher: FC<ILanguageSwitcher> = ({ className, short }) =>
       {short ? t('Lan') : t('Language')}
     </Button>
   );
-};
+});
+
+LanguageSwitcher.displayName = 'LanguageSwitcher';

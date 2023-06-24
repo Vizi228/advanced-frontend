@@ -1,17 +1,13 @@
 import { FC, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LanguageSwitcher } from 'widgets/LanguageSwitcher';
 
-import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
-
-import HomeIcon from 'shared/assets/Vector.svg';
-import AboutIcon from 'shared/assets/clarity_list-outline-badged.svg';
+import { SidebarItemsList } from '../../model/items';
+import SidebarItem from '../SidebarItem/SidebarItem';
 
 import styles from './Sidebar.module.scss';
 
@@ -20,9 +16,7 @@ interface ISidebar {
 }
 
 export const Sidebar: FC<ISidebar> = ({ className }) => {
-  const { t } = useTranslation();
   const [collapsed, setCollapsed] = useState<boolean>(false);
-
   const onToggle = () => {
     setCollapsed((prev) => !prev);
   };
@@ -35,26 +29,9 @@ export const Sidebar: FC<ISidebar> = ({ className }) => {
       ])}
     >
       <div className={styles.items}>
-        <AppLink
-          to={RoutePath.main}
-          theme={AppLinkTheme.PRIMARY}
-          className={styles.item}
-        >
-          <HomeIcon className={styles.icon} />
-          <span className={styles.link}>
-            {t('Main')}
-          </span>
-        </AppLink>
-        <AppLink
-          to={RoutePath.about}
-          theme={AppLinkTheme.PRIMARY}
-          className={styles.item}
-        >
-          <AboutIcon className={styles.icon} />
-          <span className={styles.link}>
-            {t('About us')}
-          </span>
-        </AppLink>
+        {SidebarItemsList.map((item) => (
+          <SidebarItem key={item.to} collapsed={collapsed} item={item} />
+        ))}
       </div>
       <Button
         className={styles.collapseBtn}

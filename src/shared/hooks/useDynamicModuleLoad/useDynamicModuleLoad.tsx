@@ -18,7 +18,7 @@ export function useDynamicModuleLoad(
     Object.entries(reducers).forEach(([key, reducer]) => {
       store.reducerManager.add(key as StateSchemaKey, reducer);
     });
-
+    console.log('init');
     return () => {
       if (removeAfterUnmount) {
         Object.keys(reducers).forEach((key) => {
