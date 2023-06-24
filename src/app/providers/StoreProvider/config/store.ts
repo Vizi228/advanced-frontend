@@ -7,7 +7,7 @@ import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
 
 import { createReducerManager } from './reducerManager';
-import { ReduxStoreWithManager, StateSchema } from './types';
+import { IReducerManager, StateSchema } from './types';
 
 export function createReduxStore(
   initialState?: StateSchema,
@@ -25,8 +25,10 @@ export function createReduxStore(
     reducer: manager.reduce,
     devTools: __IS_DEV__,
     preloadedState: initialState,
-  }) as ReduxStoreWithManager;
+  });
 
-  store.reducerManager = manager;
+  (store as typeof store & { reducerManager: IReducerManager }).reducerManager = manager;
   return store;
 }
+
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];
