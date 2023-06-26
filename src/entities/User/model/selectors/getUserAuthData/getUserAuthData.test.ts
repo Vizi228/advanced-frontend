@@ -1,4 +1,3 @@
-import { DeepPartial } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/providers/StoreProvider';
 
 import { getUserAuthData } from './getUserAuthData';
@@ -24,10 +23,10 @@ describe('GetUserAuthDataTest', () => {
     });
   });
   test('check username', () => {
-    expect(getUserAuthData(state as StateSchema).username).not.toBe('user1');
+    expect(getUserAuthData(state as StateSchema)?.username).not.toBe('user1');
   });
   test('should return id', () => {
-    expect(getUserAuthData(state as StateSchema).id).toBe(1);
+    expect(getUserAuthData(state as StateSchema)?.id).toBe(1);
   });
   test('should return undefined', () => {
     expect(getUserAuthData({} as StateSchema)).toEqual(undefined);

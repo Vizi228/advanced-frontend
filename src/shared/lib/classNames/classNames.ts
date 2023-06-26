@@ -1,7 +1,7 @@
 export function classNames(
   cls: string,
-  mods: Record<string, boolean | string> = {},
-  additional: string[] = [],
+  mods: Record<string, boolean | string | undefined> = {},
+  additional: (string | undefined)[] = [],
 ): string {
   const filteredMods = Object.entries(mods)
     .filter(([_, value]) => Boolean(value))

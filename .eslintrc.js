@@ -38,6 +38,7 @@ module.exports = {
       { markupOnly: true, ignoreAttribute: ['data-testId', 'to'] },
     ],
     'no-shadow': 'off',
+    'no-undef': 'off',
     'no-unused-vars': [
       'error',
       { args: 'none', varsIgnorePattern: '^([A-Z]|__)' },

@@ -7,7 +7,7 @@ import {
   StateSchemaKey,
 } from 'app/providers/StoreProvider';
 
-type ReducerList = Partial<Record<StateSchemaKey, Reducer>>;
+export type ReducerList = Partial<Record<StateSchemaKey, Reducer>>;
 
 export function useDynamicModuleLoad(
   reducers: ReducerList,
@@ -18,7 +18,6 @@ export function useDynamicModuleLoad(
     Object.entries(reducers).forEach(([key, reducer]) => {
       store.reducerManager.add(key as StateSchemaKey, reducer);
     });
-    console.log('init');
     return () => {
       if (removeAfterUnmount) {
         Object.keys(reducers).forEach((key) => {

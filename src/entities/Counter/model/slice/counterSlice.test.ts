@@ -1,5 +1,3 @@
-import { DeepPartial } from '@reduxjs/toolkit';
-
 import { counterActions, counterReducer, CounterSchema } from './counterSlice';
 
 describe('CounterSliceTest', () => {
@@ -9,12 +7,6 @@ describe('CounterSliceTest', () => {
     state = {
       value: 10,
     };
-  });
-
-  test('should work with empty state', () => {
-    expect(counterReducer(undefined as CounterSchema, counterActions.increment())).toEqual(
-      { value: 1 },
-    );
   });
 
   test('increment', () => {

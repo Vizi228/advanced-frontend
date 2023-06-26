@@ -25,7 +25,7 @@ export const Input = memo((props: IInput) => {
     onChange, value, className, type, autoFocus, placeholder, ...others
   } = props;
 
-  const inputRef = useRef<HTMLInputElement>();
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const [isFocused, setIsFocused] = useState(false);
   const [caretDistance, setCaretDistance] = useState(0);
 

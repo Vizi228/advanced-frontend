@@ -17,7 +17,7 @@ interface IText {
 }
 
 export const Text: FC<IText> = ({
-  className, theme, text, title,
+  className, theme = TextTheme.PRIMARY, text, title,
 }) => (
   <div className={classNames(styles.Text, {}, [className, styles[theme]])}>
     {title && <p className={styles.title}>{title}</p>}
